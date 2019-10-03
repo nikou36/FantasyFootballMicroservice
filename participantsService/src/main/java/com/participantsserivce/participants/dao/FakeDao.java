@@ -14,9 +14,9 @@ public class FakeDao {
 
     public FakeDao(){
         participants = new HashMap<Integer, Participant>();
-        participants.put(1, new Participant("james", 2019,"champion"));
-        participants.put(2, new Participant("frank", 2019,"DNQ"));
-        participants.put(3, new Participant("nick", 2019,"runner up"));
+        participants.put(1, new Participant("james", 2019,"champion","Croc"));
+        participants.put(2, new Participant("frank", 2019,"DNQ","Luck"));
+        participants.put(3, new Participant("nick", 2019,"runner up","Bell"));
     }
 
     public Collection<Participant> getAll() {

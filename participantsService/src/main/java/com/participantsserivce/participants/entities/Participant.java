@@ -9,11 +9,21 @@ public class Participant {
     private String name;// Manager name
     private int year;//Year they participated
     private String rank;//Rank in final standings
+    private String teamName;
 
-    public Participant(String name, int year, String rank) {
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    public Participant(String name, int year, String rank, String team) {
         this.name = name;
         this.year = year;
         this.rank = rank;
+        this.teamName = team;
     }
 
     public Participant() {

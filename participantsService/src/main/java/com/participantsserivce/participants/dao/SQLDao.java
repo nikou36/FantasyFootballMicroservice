@@ -24,7 +24,8 @@ public class SQLDao {
         ResultSet rs = getDb();
         int id = 1;
         while(rs.next()) {
-            participants.put(id, new Participant(rs.getString("Name"),Integer.parseInt(rs.getString("Year")),rs.getString("Rank")));
+            participants.put(id, new Participant(rs.getString("Name"),Integer.parseInt(rs.getString("Year")),rs.getString("Rank"),
+                    rs.getString("TeamName")));
             id++;
         }
     }
@@ -32,6 +33,30 @@ public class SQLDao {
     //Returns information of all participants
     public Collection<Participant> getAll() {
         return participants.values();
+    }
+
+    //Inserts new participant info into the database
+    public void put(Participant part) {
+        String name = "'"+part.getName()+"'";
+        int year = part.getYear();
+        String rank = part.getRank();
+        String team = "'"+part.getTeamName()+"'";
+
+        String url = "jdbc:mysql://localhost:3306/participants";
+        String user = "root";
+        String password = "Seattle123!";
+        try {
+            Connection myconn = DriverManager.getConnection(url,user,password);
+            Statement mystmt = myconn.createStatement();
+            String sql = "INSERT INTO participants values(" + name +","+rank +","+year+","+team+")";
+            mystmt.execute(sql);
+        }catch(SQLException e) {
+
+        }
+
+
+
+
     }
 
     //Accesses the SQL database and returns the ResultSet.

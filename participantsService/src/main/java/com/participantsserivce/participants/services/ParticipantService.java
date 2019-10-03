@@ -18,8 +18,14 @@ public class ParticipantService {
 TO DO: Handle updates, deletions, insertions, etc
  */
 
+    //Gets data from sql database
     public Collection<Participant> getAll() {
         return this.dao.getAll();
+    }
+
+    //Puts data into sql database
+    public void insert(Participant participants) {
+        dao.put(participants);
     }
 
 }
