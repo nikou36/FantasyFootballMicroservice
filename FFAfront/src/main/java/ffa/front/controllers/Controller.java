@@ -16,5 +16,10 @@ public class Controller {
         return "main";
     }
 
+    @GetMapping("/2017Season")
+    public String seventeen(HttpServletRequest req) {
+        return "2017Season";
+    }
+
 
 }

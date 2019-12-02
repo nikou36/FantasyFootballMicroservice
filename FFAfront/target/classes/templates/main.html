@@ -7,10 +7,14 @@
     <style>
         body{
             overflow: scroll;
+
         }
         #wrapper{
             text-align: center;
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
         }
 
         #2017{
@@ -29,20 +33,25 @@
 <body>
     <div class = "container">
         <h1 class = "display-4">Welcome to the archives of the our fantasy football league</h1>
-        <p>Here you can find the data of our past seasons</p>
+        <p>Founded in 2017, the NFFL has hosted many fierce fantasy football battles. This site is dedicated to archiving
+        the past seasons. Whether your here to reminice, or find proof for your smack talk you can find all the past history here.
+        </p>
     </div>
     <div id = "wrapper">
-        <div id ="2017" style="width:600px;height:200px;border:1px solid #000000">
-            <h2>2017 Season</h2>
-            <h2>At a Glance:</h2>
-            <p><i>The first year of the National Frank Fantasy League ended with a final showdown between
-                the 11-2 Cleveland Bellichicks(Nick) and the 9-4 Compton Cool Cats(Kellen). Kellen defeats Nick and becomes the first ever champion in the NFFL.</i>
-            </p>
-        </div>
+
+        <a th:href="@{2017Season}">
+            <div id ="2017" style="width:600px;height:200px;border:1px solid #000000">
+                <h2>2017 Season</h2>
+                <h2>At a Glance:</h2>
+                <p><i>The first year of the National Frank Fantasy League ended with a final showdown between
+                    the 11-2 Cleveland Bellichicks(Nick) and the 9-4 Compton Cool Cats(Kellen). Kellen defeats Nick and becomes the first ever champion of the NFFL.</i>
+                </p>
+            </div>
+        </a>
         <div id="2018" style="width:600px;height:200px;border:1px solid #000000">
             <h2>2018 Season</h2>
             <h2>At a Glance:</h2>
-            <p><i>The second year of the National Frank Fantasy League saw new faces and fierce competition culminating with a final showdown between
+            <p><i>The second year of the National Frank Fantasy League saw new faces and fierce competition culminating in a final showdown between
                 James and the defending champion Kellen. Kellen decisively defeats James and takes his second title in two years. A dynasty is born.</i>
             </p>
         </div>
@@ -53,6 +62,8 @@
             <p><i>The third year of the NFFL has kicked off.</i>
             </p>
         </div>
+
+
 
     </div>
 
