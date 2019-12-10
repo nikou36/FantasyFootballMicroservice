@@ -36,6 +36,7 @@ public class SQLDao {
     }
 
     //Inserts new participant info into the database
+    //POST
     public void put(Participant part) {
         String name = "'"+part.getName()+"'";
         int year = part.getYear();
@@ -59,7 +60,7 @@ public class SQLDao {
 
     }
 
-    //Accesses the SQL database and returns the ResultSet.
+    //Accesses the SQL database and returns the ResultSet. GET
     private ResultSet getDb() {
         String url = "jdbc:mysql://localhost:3306/participants";
         String user = "root";
@@ -77,4 +78,26 @@ public class SQLDao {
         return rs;
     }
 
+    //PUT
+    private void updateDb(Participant part) {
+        String name = "'"+part.getName()+"'";
+        int year = part.getYear();
+        String rank = part.getRank();
+        String team = "'"+part.getTeamName()+"'";
+
+        String url = "jdbc:mysql://localhost:3306/participants";
+        String user = "root";
+        String password = "Seattle123!";
+        ResultSet rs = null;
+        try {
+            Connection myconn = DriverManager.getConnection(url,user,password);
+            Statement mystatement = myconn.createStatement();
+            String sql = "INSERT INTO participants values(" + name +","+rank +","+year+","+team+") " +
+                    " ON DUPLICATE KEY UPDATE Name =" + name + ", participants.Rank =" + rank + ", Year =" + year + ", TeamName =" + team;
+            rs = mystatement.executeQuery(sql);
+
+        }catch (SQLException e) {
+
+        }
+    }
 }

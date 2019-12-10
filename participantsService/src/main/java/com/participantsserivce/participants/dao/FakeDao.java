@@ -22,4 +22,8 @@ public class FakeDao {
     public Collection<Participant> getAll() {
         return this.participants.values();
     }
+
+    public void put(Participant part) {
+        participants.put(10,part);
+    }
 }
