@@ -37,5 +37,10 @@ public class RestController {
         service.insert(participant);
     }
 
+    @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void updateParticipant(@RequestBody Participant participant) {
+        service.update(participant);
+    }
+
 
 }

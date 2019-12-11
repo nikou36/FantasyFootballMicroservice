@@ -28,4 +28,8 @@ TO DO: Handle updates, deletions, insertions, etc
         dao.put(participants);
     }
 
+    public void update(Participant participant) {
+        this.dao.updateDb(participant);
+    }
+
 }

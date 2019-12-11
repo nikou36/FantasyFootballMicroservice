@@ -1,5 +1,6 @@
 package com.participantsserivce.participants.dao;
 
+import com.fasterxml.jackson.core.JsonParser;
 import com.participantsserivce.participants.entities.Participant;
 import org.springframework.stereotype.Repository;
 
@@ -49,7 +50,7 @@ public class SQLDao {
         try {
             Connection myconn = DriverManager.getConnection(url,user,password);
             Statement mystmt = myconn.createStatement();
-            String sql = "INSERT INTO participants values(" + name +","+rank +","+year+","+team+")";
+            String sql = "INSERT INTO participants.participants values(" + name +","+rank +","+year+","+team+")";
             mystmt.execute(sql);
         }catch(SQLException e) {
 
@@ -61,7 +62,7 @@ public class SQLDao {
     }
 
     //Accesses the SQL database and returns the ResultSet. GET
-    private ResultSet getDb() {
+    private ResultSet getDb() throws SQLException {
         String url = "jdbc:mysql://localhost:3306/participants";
         String user = "root";
         String password = "Seattle123!";
@@ -75,11 +76,32 @@ public class SQLDao {
         }catch (SQLException e) {
 
         }
+
+        return rs;
+    }
+
+    private ResultSet getName(String name) {
+        String url = "jdbc:mysql://localhost:3306/participants";
+        String user = "root";
+        String password = "Seattle123!";
+        ResultSet rs = null;
+        try {
+            Connection myconn = DriverManager.getConnection(url,user,password);
+            Statement mystatement = myconn.createStatement();
+            String sql = "SELECT * FROM participants.participants where Name =" + name;
+            rs = mystatement.executeQuery(sql);
+
+        }catch (SQLException e) {
+
+        }
+
+        //JsonParser jsonParser = new JsonParser();
+
         return rs;
     }
 
     //PUT
-    private void updateDb(Participant part) {
+    public void updateDb(Participant part) {
         String name = "'"+part.getName()+"'";
         int year = part.getYear();
         String rank = part.getRank();
@@ -92,7 +114,7 @@ public class SQLDao {
         try {
             Connection myconn = DriverManager.getConnection(url,user,password);
             Statement mystatement = myconn.createStatement();
-            String sql = "INSERT INTO participants values(" + name +","+rank +","+year+","+team+") " +
+            String sql = "INSERT INTO participants.participants values(" + name +","+rank +","+year+","+team+") " +
                     " ON DUPLICATE KEY UPDATE Name =" + name + ", participants.Rank =" + rank + ", Year =" + year + ", TeamName =" + team;
             rs = mystatement.executeQuery(sql);
 
